@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ircblaster;
-
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author svendavison
- */
 public class Bot {
     BufferedWriter writer;
     BufferedReader reader;
@@ -76,14 +66,12 @@ public class Bot {
                 if(!isDev){
                     channels.add(ch);
                     System.out.println(String.format("Added: %s to list.", ch));
-                }
-                
+                }                
                 //force a couple channels
                 if(channels.isEmpty()){
                     channels.add("#xenthoxozet");
                     channels.add("#xenthbot");
-                }
-                
+                }                
             } else if (line.contains(String.format(" 323 %s ", login))) {
                 //end of LIST
                 System.out.println(String.format("[ OUR CHANNELS ]"));
@@ -111,8 +99,7 @@ public class Bot {
         
         for(String str : fullMsg){
             this.postMessage(ch, str);
-        }
-        
+        }        
     }
     
     private void joinChannel(String ch) throws IOException {
@@ -127,5 +114,4 @@ public class Bot {
         writer.write(String.format("%s\r\n", msg));
         writer.flush();
     }
-
 }
